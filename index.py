@@ -1,3 +1,8 @@
-# import dataset data
+from dataset import data
 
-# your code here
+# Task 1
+class Word:
+    def __init__(self, coord, text):
+        self.coord = coord
+        self.text = text
+
