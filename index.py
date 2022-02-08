@@ -55,3 +55,23 @@ for i in range(len(list_of_lengths_of_same_height)):
         height_of_mainbody = list_of_unique_wordheights[i]
 
 mainbody = list_of_unique_wordheights[7]
+
+#Task 5
+
+#PART 1
+dict_y_coords = {}
+
+for word in dict_same_height[18]:
+    for line in data:
+        if line[7] == word:
+            if line[4] not in dict_y_coords.keys():
+                a = []
+                dict_y_coords[line[4]] = a
+
+for key in dict_y_coords.keys():
+    b = []
+    for line in data:
+        if line[4] == key:
+            b.append(line[7])
+    print(b)
+    dict_y_coords[key] = b
