@@ -20,3 +20,26 @@ class Word:
 dictionary = {}
 for line in data[1:]:
     dictionary[line[1]] = Word(line)   
+
+#Task 3
+
+wordheights = []
+for j in range(len(data)-1):
+    wordheights.append(dictionary[str(j)].wordHeight)
+
+unique_wordheights = set(wordheights)
+
+lists_of_same_height = []
+dict_same_height = {}
+list_of_lengths_of_same_height = []
+
+for k in unique_wordheights:
+    for l in range(len(data)-1):
+        if l == 0:
+            pass
+        else:
+            if dictionary[str(l)].wordHeight == k:
+                lists_of_same_height.append(dictionary[str(l)].text)
+                
+    dict_same_height[k] = lists_of_same_height
+    list_of_lengths_of_same_height.append(len(lists_of_same_height))
