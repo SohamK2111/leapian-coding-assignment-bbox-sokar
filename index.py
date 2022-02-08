@@ -43,3 +43,15 @@ for k in unique_wordheights:
                 
     dict_same_height[k] = lists_of_same_height
     list_of_lengths_of_same_height.append(len(lists_of_same_height))
+
+#Task 4
+
+largest_length = max(list_of_lengths_of_same_height)
+
+list_of_unique_wordheights = list(unique_wordheights)
+
+for i in range(len(list_of_lengths_of_same_height)):
+    if largest_length == list_of_lengths_of_same_height[i]:
+        height_of_mainbody = list_of_unique_wordheights[i]
+
+mainbody = list_of_unique_wordheights[7]
