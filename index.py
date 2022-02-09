@@ -1,4 +1,5 @@
 from dataset import data
+from statistics import *
 
 # Task 1
 
@@ -73,5 +74,48 @@ for key in dict_y_coords.keys():
     for line in data:
         if line[4] == key:
             b.append(line[7])
-    print(b)
     dict_y_coords[key] = b
+
+#PART 2
+
+y_coords = []
+for j in dict_y_coords.keys():
+    y_coords.append(j)
+
+list_of_distances_between_y_coords = []
+for i in range(len(y_coords)-2):
+    z = float(y_coords[i+1])-float(y_coords[i])
+    list_of_distances_between_y_coords.append(z)
+
+mean_distance = -1* sum(list_of_distances_between_y_coords)/len(list_of_distances_between_y_coords)
+median_distance = median(list_of_distances_between_y_coords)
+mode_distance = mode(list_of_distances_between_y_coords)
+
+#Part 3
+
+lines = []
+for key in dict_y_coords.keys():
+    a = dict_y_coords[key]
+    #this is a list of all the words on the same line. Now need to find each word's line in the dataset, find its x coord and then order it.
+    list_of_unordered_words_on_same_line = []
+    for k in a:
+        for line in data:
+            if line[7] == k:
+                list_of_unordered_words_on_same_line.append(line[3])
+        lines.append(list_of_unordered_words_on_same_line)
+
+list_of_sorted_words_xcoords_on_same_line = []
+for line in lines:
+    list_of_sorted_words_xcoords_on_same_line.append(sorted(line))
+
+#Part 4
+
+list_of_distances_between_x_coords = []
+for line in list_of_sorted_words_xcoords_on_same_line:
+    for j in range(len(line)-2):
+        v = float(line[j+1]) - float(line[j])
+        list_of_distances_between_x_coords.append(v)
+
+mean_x_distance = mean(list_of_distances_between_x_coords)
+median_x_distance = median(list_of_distances_between_x_coords)
+mode_x_distance = mode(list_of_distances_between_x_coords)
